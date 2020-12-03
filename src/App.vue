@@ -1,32 +1,35 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <v-app-bar-nav-icon
+        @click.stop="toggleSideMenu"
+      ></v-app-bar-nav-icon>
+      <v-toolbar-title>マイアドレス張</v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+      <side-nav></side-nav>
+
+    <v-main>
+      <v-container fluid fill-height align-start>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { mapActions } from "vuex";
+import SideNav from "./components/SideNav";
+export default {
+  name: "App",
 
-#nav {
-  padding: 30px;
+  components: { SideNav },
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+  data: () => ({
+    //
+  }),
+  methods: {
+    ...mapActions(["toggleSideMenu"]),
+  },
+};
+</script>
