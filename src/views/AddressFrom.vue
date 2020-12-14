@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -56,7 +56,7 @@ export default {
       this.$router.push({ name: "addresses" });
       this.address = {};
     },
-    ...mapState(["addAddress"]),
+    ...mapActions(["addAddress"]),
   },
 };
 </script>
